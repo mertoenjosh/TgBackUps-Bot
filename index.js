@@ -27,24 +27,25 @@ bot.start(ctx => ctx.reply(welcomeMsg));
 // help init
 bot.help(ctx => ctx.reply('Send me a sticker'));
 
-// handle media
+// HANDLE MEDIA
+
+// media to handle
 const media = ['photo', 'document'];
 
+// photos
 bot.on('photo', async ctx => {
   console.log(ctx.message);
   const { file_id } = ctx.message.photo.pop();
-
   const url = await ctx.telegram.getFileLink(file_id);
   ctx.reply(url);
 });
 
-// hande cocument
-
+// documents
 bot.on('document', async ctx => {
-  const { file_id: fileId } = ctx.update.message.document;
-  const fileUrl = await ctx.telegram.getFileLink(fileId);
-  const response = await axios.get(fileUrl);
-  ctx.reply('I read the file for you! The contents were:\n\n' + response.data);
+  console.log(ctx.message);
+  const { file_id } = ctx.message.document;
+  const url = await ctx.telegram.getFileLink(file_id);
+  ctx.reply(url);
 });
 
 bot.launch();
