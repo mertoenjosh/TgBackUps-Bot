@@ -34,7 +34,7 @@ const media = ['photo', 'document'];
 
 // photos
 bot.on('photo', async ctx => {
-  console.log(ctx.message);
+  //   console.log(ctx.message);
   const { file_id } = ctx.message.photo.pop();
   const url = await ctx.telegram.getFileLink(file_id);
   ctx.reply(url);
@@ -42,7 +42,7 @@ bot.on('photo', async ctx => {
 
 // documents
 bot.on('document', async ctx => {
-  console.log(ctx.message);
+  //   console.log(ctx.message);
   const { file_id } = ctx.message.document;
   const url = await ctx.telegram.getFileLink(file_id);
   ctx.reply(url);
